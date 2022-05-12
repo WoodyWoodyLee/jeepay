@@ -35,9 +35,12 @@ public class OssFileConfig {
 
     /** 用户头像 **/
     interface BIZ_TYPE {
-        String AVATAR = "avatar"; /** 用户头像 **/
-        String IF_BG = "ifBG"; /** 接口类型卡片背景图片 **/
-        String CERT = "cert";  /** 接口参数 **/
+        /** 用户头像 **/
+        String AVATAR = "avatar";
+        /** 接口类型卡片背景图片 **/
+        String IF_BG = "ifBG";
+        /** 接口参数 **/
+        String CERT = "cert";
     }
 
     /** 图片类型后缀格式 **/
@@ -63,7 +66,7 @@ public class OssFileConfig {
     private OssSavePlaceEnum ossSavePlaceEnum;
 
     /** 允许的文件后缀, 默认全部类型 **/
-    private Set<String> allowFileSuffix = new HashSet<>(Arrays.asList(ALL_SUFFIX_FLAG));
+    private Set<String> allowFileSuffix;
 
     /** 允许的文件大小, 单位： Byte **/
     private Long maxSize = DEFAULT_MAX_SIZE;
@@ -72,7 +75,8 @@ public class OssFileConfig {
     /** 是否在允许的文件类型后缀内 **/
     public boolean isAllowFileSuffix(String fixSuffix){
 
-        if(this.allowFileSuffix.contains(ALL_SUFFIX_FLAG)){ //允许全部
+        if(this.allowFileSuffix.contains(ALL_SUFFIX_FLAG)){
+            //允许全部
             return true;
         }
 
@@ -82,7 +86,8 @@ public class OssFileConfig {
     /** 是否在允许的大小范围内 **/
     public boolean isMaxSizeLimit(Long fileSize){
 
-        if(ALL_MAX_SIZE.equals(this.maxSize)){ //允许全部大小
+        if(ALL_MAX_SIZE.equals(this.maxSize)){
+            //允许全部大小
             return true;
         }
 

@@ -17,7 +17,9 @@ package com.jeequan.jeepay.core.aop;
 
 import java.lang.annotation.*;
 
-/*
+/**
+ * @author QING
+ */ /*
 * 方法级日志切面注解
 *
 * @author terrfly

@@ -41,6 +41,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -148,7 +149,8 @@ public class MethodLogAop {
         //包名 方法名
         String methodName = joinPoint.getSignature().getName();
         String packageName = joinPoint.getThis().getClass().getName();
-        if (packageName.indexOf("$$EnhancerByCGLIB$$") > -1 || packageName.indexOf("$$EnhancerBySpringCGLIB$$") > -1) { // 如果是CGLIB动态生成的类
+        // 如果是CGLIB动态生成的类
+        if (packageName.contains("$$EnhancerByCGLIB$$") || packageName.contains("$$EnhancerBySpringCGLIB$$")) {
             packageName = packageName.substring(0, packageName.indexOf("$$"));
         }
         sysLog.setMethodName(packageName + "." + methodName);
@@ -158,7 +160,7 @@ public class MethodLogAop {
         sysLog.setSysType(CS.SYS_TYPE.MGR);
 
         if (userDetails != null) {
-            sysLog.setUserId(JeeUserDetails.getCurrentUserDetails().getSysUser().getSysUserId());
+            sysLog.setUserId(Objects.requireNonNull(JeeUserDetails.getCurrentUserDetails()).getSysUser().getSysUserId());
             sysLog.setUserName(JeeUserDetails.getCurrentUserDetails().getSysUser().getRealname());
             sysLog.setSysType(JeeUserDetails.getCurrentUserDetails().getSysUser().getSysType());
         }

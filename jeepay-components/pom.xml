@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion> <!-- POM模型版本 -->
 
-  <groupId>com.jeequan</groupId> <!-- 组织名, 类似于包名 -->
   <artifactId>jeepay-components</artifactId>  <!-- 项目名称  -->
   <packaging>pom</packaging> <!-- 项目的最终打包类型/发布形式, 可选[jar, war, pom, maven-plugin]等 -->
 
